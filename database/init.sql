@@ -15,26 +15,26 @@ CREATE TABLE users (
 
 
 CREATE TABLE books ( 
-  b_id SERIAL PRIMARY KEY, 
-  b_name VARCHAR(255),
+  b_id VARCHAR(255) PRIMARY KEY, 
+  b_name VARCHAR(255) NOT NULL, 
   author VARCHAR(255),
-  category TEXT, 
+  category VARCHAR(255), 
   copies INTEGER DEFAULT 0
 );
 
 CREATE TABLE bookCopies (
-  id SERIAL PRIMARY KEY,                   
-  book_id INTEGER REFERENCES books(b_id),   
-  available BOOLEAN DEFAULT TRUE,     
+  id VARCHAR(255) PRIMARY KEY,                   
+  book_id VARCHAR(255) REFERENCES books(b_id),   
+  available BOOLEAN DEFAULT TRUE   
 );
 
 CREATE TABLE borrow (
   id SERIAL PRIMARY KEY,
-  book_id INTEGER REFERENCES books(b_id),
-  user_id INTEGER REFERENCES users(u_id),
-  copy_id INTEGER REFERENCES bookCopies(id),
+  book_id VARCHAR(255) REFERENCES books(b_id),
+  user_id VARCHAR(255) REFERENCES users(u_id),
+  copy_id VARCHAR(255) REFERENCES bookCopies(id),
   taken BOOLEAN DEFAULT FALSE,
-  received BOOLEAN DEFAULT FALSE,
+  received BOOLEAN DEFAULT FALSE
 );
 
 
@@ -44,16 +44,15 @@ CREATE TABLE borrow (
 INSERT INTO users VALUES
   ('20897', 'user01', 'fir','usr',25,'hell','i_cry_at_night@gmail.com','0513259875'),
   ('65982', 'user02', 'sec','usr',30,'heaven','yamiti_kodasai@hotmail.com','0564879915'),
-  ('96133', 'user03', 'thrd','usr',15,'moon','oni-chan@outlook.com','0568947634'),
-  
+  ('96133', 'user03', 'thrd','usr',15,'moon','oni-chan@outlook.com','0568947634')
 ;
 
-INSERT INTO books (b_id, b_name, category, copies) VALUES
-  ('str01','A magical End','Bingiman freed','Announcing of invitation principles in.', 6),
-  ('str02','Yakoza','auth02','Peculiar trifling absolute and wandered yet.', 2),
-  ('ent01','the meme lord','auth03','Far stairs now coming bed oppose hunted become his.', 3),
-  ('sci01','why do i exist','auth04','Curabitur arcu quam, imperdiet ac orci ac.', 4),
-  ('str03','Robin of the Hood','auth05','Aenean blandit risus sed pellentesque.', 5)
+INSERT INTO books (b_id, b_name,author, category, copies) VALUES
+  ('str01','A magical End','Bingiman freed','Announcing of invitation',6),
+  ('str02','Yakoza','auth02','Peculiar trifling absolute',2),
+  ('ent01','the meme lord','auth03','Far stairs now coming ',3),
+  ('sci01','why do i exist','auth04','Curabitur arcu quam',4),
+  ('str03','Robin of the Hood','auth05','Aenean blandit ',5)
 ;
 
 INSERT INTO bookCopies (id, book_id, available) VALUES
@@ -76,9 +75,9 @@ INSERT INTO bookCopies (id, book_id, available) VALUES
   ('str03-02','str03', 'true'),
   ('str03-03','str03', 'true'),
   ('str03-04','str03', 'true'),
-  ('str03-05','str03', 'true'),
+  ('str03-05','str03', 'true')
 ;
 
--- TODO no need for insering values for the borrow table! it will be done via website
+-- ? no need for insering values for the borrow table! it will be done via website
 
 COMMIT;
