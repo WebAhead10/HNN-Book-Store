@@ -29,6 +29,13 @@ body {
 .h1 {
   padding: 5px 5px;
 }
+.h2{
+  font-size: 1.5vw;
+
+  font-family: inherit;
+  
+}
+
 .btn {
   background-color: #cfd2cd;
   color: #000;
