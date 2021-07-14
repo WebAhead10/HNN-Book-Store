@@ -1,10 +1,10 @@
 const button = document.getElementById('clickme')
   
-const user =document.getElementById('user')
+const name =document.getElementById('user')
 const password =document.getElementById('password')
    
    button.addEventListener('click', () => {
-       fetch('/user-profile')
+       fetch('/')
            .then(res => res.json())
            .then(data => {
                console.log(data)
