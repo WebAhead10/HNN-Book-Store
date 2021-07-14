@@ -24,7 +24,7 @@ server.use((req, res, next) => {
   if (token) {
     const user = jwt.verify(token, SECRET);
     req.user = user;
-    console.log(req.user);
+  
   }
   next();
 });
@@ -35,7 +35,7 @@ server.get('/', (req, res) => {
 });
 
 function checkAuth(req, res, next) {
-  const user = req.user;
+  const user = req.body.user;
  
   if (!user) {
     res.status(401).send(`

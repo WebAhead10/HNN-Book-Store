@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 * {
   box-sizing: border-box;
 }
 body {
   box-sizing: border-box;
   background-image: url("bg.jpg");
-
+  font-family: 'Playfair Display', serif;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -50,4 +51,37 @@ body {
 }
 .btn:hover {
   background-color: #847577ab;
+}
+
+.mainDiv
+{
+  display:flex;
+  background-color: #a6a2a29d;
+  background-image: url("bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width:500px;
+  height: 90vh;
+  border: 1px solid black ;
+  border-radius:8px;
+  justify-content: flex-start;
+  flex-direction:column;
+  /* align-items: center; */
+  /* padding:2%; */
+}
+.bookTemplate{
+  display:flex;
+  background-color: rgba(185, 185, 185, 0.773);
+  background-size: cover;
+  height: 5vh;
+  border: 1px solid rgba(155, 108, 20, 0.774) ;
+  border-radius:5px;
+  justify-content: space-around;
+  flex-direction:row;
+  align-items: center;
+  /* padding: 0% 2%; */
+  margin: 1% 2% 0% 2%;
+}
+.bookName{
+  font-weight: bolder;
 }
