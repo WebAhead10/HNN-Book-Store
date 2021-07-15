@@ -3,10 +3,10 @@ BEGIN;
 DROP TABLE IF EXISTS users, books, bookCopies, borrow CASCADE;
 
 CREATE TABLE users (
-  u_id VARCHAR(255) PRIMARY KEY NOT NULL,
+  id SERIAL PRIMARY KEY NOT NULL,
   username VARCHAR(255) NOT NULL,
-  f_name VARCHAR(255) NOT NULL,
-  l_name VARCHAR(255) NOT NULL,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
   age INTEGER,
   location VARCHAR(255),
   email VARCHAR (255),
@@ -15,8 +15,8 @@ CREATE TABLE users (
 
 
 CREATE TABLE books ( 
-  b_id VARCHAR(255) PRIMARY KEY, 
-  b_name VARCHAR(255) NOT NULL, 
+  id VARCHAR(255) PRIMARY KEY, 
+  name VARCHAR(255) NOT NULL, 
   author VARCHAR(255),
   category VARCHAR(255), 
   copies INTEGER DEFAULT 0
@@ -28,13 +28,13 @@ CREATE TABLE bookCopies (
   available BOOLEAN DEFAULT TRUE   
 );
 
-CREATE TABLE borrow (
+CREATE TABLE users_book (
   id SERIAL PRIMARY KEY,
   book_id VARCHAR(255) REFERENCES books(b_id),
   user_id VARCHAR(255) REFERENCES users(u_id),
   copy_id VARCHAR(255) REFERENCES bookCopies(id),
   taken BOOLEAN DEFAULT FALSE,
-  received BOOLEAN DEFAULT FALSE
+  returned BOOLEAN DEFAULT FALSE
 );
 
 
