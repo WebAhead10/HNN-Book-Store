@@ -6,9 +6,10 @@
 //   password: "yourpassword",
 //   database: "mydb"
 // }); 
-
-import { db } from '/database/connection.js';
-
+fetch("/data")
+.then((res)=>res.json())
+.then(data => console.log(data))
+.catch(console.error)
 
 // const pool = new Pool({ 
 //   user: 'awnxjhldkaoisa',

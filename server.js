@@ -1,10 +1,10 @@
 const express = require("express");
+const server = express();
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const path = require('path');
 const PORT = process.env.PORT || 3001;
 const SECRET = "nkA$SD89&&282hd";
-const server = express();
 const router = require('./router')
 // const pg = require('pg');
 const db = require("./database/connection");
@@ -13,19 +13,20 @@ server.use(express.urlencoded());
 server.use(express.static("public"));
 server.use(router)
 
+server.use(handleErrors);
 
 const users = [{
-  name: "Noor",
-  password: "1234"
-},
-{
-  name: "Hussein",
-  password: "1234"
-},
-{
-  name: "Nidaa",
-  password: "1234"
-},
+    name: "Noor",
+    password: "1234"
+  },
+  {
+    name: "Hussein",
+    password: "1234"
+  },
+  {
+    name: "Nidaa",
+    password: "1234"
+  },
 ];
 
 
@@ -66,7 +67,6 @@ function handleErrors(error, req, res, next) {
 };
 
 
-server.use(handleErrors);
 
 server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
 
