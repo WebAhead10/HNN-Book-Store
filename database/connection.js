@@ -11,6 +11,7 @@ const connectionString = process.env.DATABASE_URL;
 // we can use this to query our database
 const db = new pg.Pool({
   connectionString,
+  ssl: { rejectUnauthorized: false },
 });
 
 // export the pool for use elsewhere on our server
